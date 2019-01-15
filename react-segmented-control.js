@@ -1,21 +1,21 @@
 ;(function (root, factory) {
   if (typeof module !== "undefined" && module.exports) {
-    module.exports = factory(require("react"));
+    module.exports = factory(require("react"), require("prop-types"), require("create-react-class"));
   } else if (typeof define === "function" && define.amd) {
-    define(["react"], factory);
+    define(["react", "prop-types"], factory);
   } else {
-    root.SegmentedControl = factory(root.React);
+    root.SegmentedControl = factory(root.React, root.PropTypes);
   }
-})(this, function (React) {
+})(this, function (React, PropTypes, createReactClass) {
   "use strict";
 
-  var SegmentedControl = React.createClass({displayName: "SegmentedControl",
+  var SegmentedControl = createReactClass({displayName: "SegmentedControl",
     propTypes: {
-      className: React.PropTypes.string,
-      onChange: React.PropTypes.func,
-      defaultValue: React.PropTypes.string,
-      value: React.PropTypes.string,
-      name: React.PropTypes.string.isRequired
+      className: PropTypes.string,
+      onChange: PropTypes.func,
+      defaultValue: PropTypes.string,
+      value: PropTypes.string,
+      name: PropTypes.string.isRequired
     },
 
     getInitialState: function() {
